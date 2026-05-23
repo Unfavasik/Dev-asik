@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.util.UUID
 
@@ -58,14 +59,13 @@ class AssistantViewModel(application: Application) : AndroidViewModel(applicatio
     init {
         // Initialize with default session if none exists
         viewModelScope.launch {
-            sessions.collect { sessionList ->
-                if (sessionList.isEmpty()) {
-                    val defaultId = UUID.randomUUID().toString()
-                    repository.createSession(defaultId, "💬 Asif's Lounge")
-                    _currentSessionId.value = defaultId
-                } else if (_currentSessionId.value == null) {
-                    _currentSessionId.value = sessionList.first().id
-                }
+            val initialSessions = repository.getAllSessions().first()
+            if (initialSessions.isEmpty()) {
+                val defaultId = UUID.randomUUID().toString()
+                repository.createSession(defaultId, "💬 Asif's Lounge")
+                _currentSessionId.value = defaultId
+            } else if (_currentSessionId.value == null) {
+                _currentSessionId.value = initialSessions.first().id
             }
         }
     }

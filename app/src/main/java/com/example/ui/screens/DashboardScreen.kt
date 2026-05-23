@@ -8,12 +8,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -53,7 +53,7 @@ fun DashboardScreen(viewModel: AssistantViewModel) {
                     onClick = { selectedTab = 0 },
                     icon = { 
                         Icon(
-                            imageVector = Icons.Default.Send, 
+                            imageVector = Icons.AutoMirrored.Filled.Send, 
                             contentDescription = "Chat", 
                             tint = if (selectedTab == 0) MaterialTheme.colorScheme.primary else NatSubText
                         ) 
@@ -102,7 +102,7 @@ fun DashboardScreen(viewModel: AssistantViewModel) {
                     contentColor = PureWhite,
                     modifier = Modifier.testTag("fab_session_manager")
                 ) {
-                    Icon(imageVector = Icons.Default.List, contentDescription = "Session History")
+                    Icon(imageVector = Icons.AutoMirrored.Filled.List, contentDescription = "Session History")
                 }
             }
         }
