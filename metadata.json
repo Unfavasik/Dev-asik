@@ -1,0 +1,6 @@
+{
+  "name": "Asif's Assistant",
+  "description": "Personal digital AI assistant representing Asif in natural Banglish chats.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
